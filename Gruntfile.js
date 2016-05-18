@@ -53,6 +53,12 @@ module.exports = function(grunt) {
       prodServer: {
       }
     },
+
+    pushLive: {
+      command: [
+        'git push live master'
+      ]
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -82,6 +88,7 @@ module.exports = function(grunt) {
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
+
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
@@ -89,6 +96,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'pushLive'
   ]);
 
 
