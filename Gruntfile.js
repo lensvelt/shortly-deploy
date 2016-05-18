@@ -51,13 +51,8 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: 'git push live master'
       }
-    },
-
-    pushLive: {
-      command: [
-        'git push live master'
-      ]
     }
   });
 
@@ -96,7 +91,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'pushLive'
+    'shell:prodServer'
   ]);
 
 
