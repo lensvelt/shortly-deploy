@@ -43,6 +43,15 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'public',
+          src: ['*.css', '!*.min.css'],
+          dest: 'public/dist',
+          ext: '.min.css'
+        }]
+      }
     },
 
     watch: {
@@ -104,7 +113,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     'concat',
-    'uglify'
+    'uglify',
+    'cssmin'
     // add your deploy tasks here
     // 'shell:prodServer'
   ]);
