@@ -1,9 +1,18 @@
 var db = require('../config');
-var crypto = require('crypto');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var crypto = require('crypto');
 
-var Link = mongoose.model('Link', db.urls);
 
+var linksSchema = new Schema({
+  url: String,
+  baseUrl: String,
+  code: String,
+  title: String,
+  visits: Number
+});
+
+var Link = mongoose.model('Link', linksSchema);
 
 module.exports = Link;
 
