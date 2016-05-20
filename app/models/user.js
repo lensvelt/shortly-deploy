@@ -9,7 +9,6 @@ var usersSchema = new Schema({
   password: { type: String, required: true }
 });
 
-
 usersSchema.methods.comparePassword = function(attemptedPassword, callback) {
   bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
     callback(isMatch);
