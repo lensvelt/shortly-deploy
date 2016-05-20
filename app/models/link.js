@@ -12,12 +12,12 @@ var linksSchema = new Schema({
   visits: Number
 });
 
-// linksSchema.methods.shorten = function () {
-//   var shasum = crypto.createHash('sha1');
-//   shasum.update(model.get('url'));
-//   model.set('code', shasum.digest('hex').slice(0, 5)); 
-// };
-
+linksSchema.methods.shorten = function () {
+  var shasum = crypto.createHash('sha1');
+  shasum.update(this.url);
+  this.code = shasum.digest('hex').slice(0, 5); 
+  this.save();
+};
 
 var Link = mongoose.model('Link', linksSchema);
 
